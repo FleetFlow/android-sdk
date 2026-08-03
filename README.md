@@ -35,4 +35,4 @@ dependencies {
 
 Start with the official docs at the **Android SDK** tab:
 
-- https://fleetflow.io/docs?sdk=android
+- https://developer.fleetflow.io?sdk=android
