@@ -31,6 +31,26 @@ dependencies {
 }
 ```
 
+## Authentication
+
+Use the activity-based overload for FleetFlow's hosted OAuth experience:
+
+```kotlin
+FleetFlow.shared(context).login(activity)
+```
+
+Apps can also present a native email-code UI. The SDK completes OAuth with
+authorization code + PKCE and securely stores the resulting session:
+
+```kotlin
+val fleetFlow = FleetFlow.shared(context)
+fleetFlow.sendLoginCode(email)
+fleetFlow.login(email, oneTimeCode = code)
+```
+
+The native flow uses the authentication methods and organization boundary of
+the configured OAuth client. It does not expose or store a password in the app.
+
 ## Full documentation
 
 Start with the official docs at the **Android SDK** tab:
