@@ -39,6 +39,19 @@ Use the activity-based overload for FleetFlow's hosted OAuth experience:
 FleetFlow.shared(context).login(activity)
 ```
 
+To open the hosted flow with Google or Apple already selected, use the
+provider-specific overload. The provider exchange and verified-email account
+linking remain on FleetFlow's authentication service:
+
+```kotlin
+val fleetFlow = FleetFlow.shared(context)
+fleetFlow.login(activity, SocialLoginProvider.GOOGLE)
+fleetFlow.login(activity, SocialLoginProvider.APPLE)
+```
+
+The hosted flow runs in a regular Custom Tab, so provider SSO and the hosted
+page's **Last used** indicator can carry across login attempts.
+
 Apps can also present a native email-code UI. The SDK completes OAuth with
 authorization code + PKCE and securely stores the resulting session:
 
