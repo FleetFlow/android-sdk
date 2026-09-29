@@ -31,6 +31,21 @@ dependencies {
 }
 ```
 
+## Custom authentication URL
+
+Pass the optional `authenticationURL` origin to use a verified FleetFlow custom authentication domain. Use an HTTP(S) origin without a path, query, fragment, or credentials; a trailing slash is accepted. Omit it (or pass `nil`/`null`) to keep the default authentication host.
+
+```kotlin
+FleetFlow.shared(context).configure(
+    baseURL = "fleetflow.io",
+    clientID = "your-client-id",
+    redirectURI = "your-app://auth-callback",
+    authenticationURL = "https://auth.example.com"
+)
+```
+
+The SDK saves this setting across launches and uses it for hosted login, native authentication, token exchange, and token refresh. API hosts and the OAuth issuer/audience remain derived from `baseURL`, so changing the authentication origin preserves existing tokens. For native iOS passkeys, include the authentication host in the app's `webcredentials` associated domains; the server must also support that host's passkey origin.
+
 ## Authentication
 
 Use the activity-based overload for FleetFlow's hosted OAuth experience:
